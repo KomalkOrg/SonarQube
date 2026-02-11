@@ -26,8 +26,8 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@v2
         with:
           args: >
-           -Dsonar.projectKey=KomalkOrg_SonarQube
-           -Dsonar.organization=komalkorg
+           -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
+           -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
            -Dsonar.qualitygate.wait=true
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
