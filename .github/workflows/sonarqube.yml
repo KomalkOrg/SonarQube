@@ -1,5 +1,5 @@
 name: SonarCloud Scan
-
+# This workflow runs when code is pushed to the main branch
 on:
   push:
     branches:
@@ -9,11 +9,11 @@ jobs:
   sonarcloud:
     name: SonarCloud Analysis
     runs-on: ubuntu-latest
-
     steps:
+      # Checkout repository code
       - name: Checkout repository
         uses: actions/checkout@v4
-
+      # Option1: Run SonarCloud analysis(with sonar-project.properties file)
       # - name: SonarCloud Scan (with Quality Gate)
       #   uses: SonarSource/sonarcloud-github-action@v2
       #   with:
@@ -21,13 +21,14 @@ jobs:
       #       -Dsonar.qualitygate.wait=true
       #   env:
       #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
+      
+      # Option2: Run SonarCloud analysis(without sonar-project.properties file)
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v2
         with:
           args: >
-           -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
-           -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
-           -Dsonar.qualitygate.wait=true
+            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
+            -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
+            -Dsonar.qualitygate.wait=true
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
