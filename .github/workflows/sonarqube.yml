@@ -14,10 +14,20 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: SonarCloud Scan (with Quality Gate)
+      # - name: SonarCloud Scan (with Quality Gate)
+      #   uses: SonarSource/sonarcloud-github-action@v2
+      #   with:
+      #     args: >
+      #       -Dsonar.qualitygate.wait=true
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v2
         with:
           args: >
-            -Dsonar.qualitygate.wait=true
+           -Dsonar.projectKey=KomalkOrg_SonarQube
+           -Dsonar.organization=komalkorg
+           -Dsonar.qualitygate.wait=true
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
