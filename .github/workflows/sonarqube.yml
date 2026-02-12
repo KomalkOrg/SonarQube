@@ -16,6 +16,8 @@ jobs:
       # Checkout repository code
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       # Option1: Run SonarCloud analysis(with sonar-project.properties file)
       # - name: SonarCloud Scan (with Quality Gate)
       #   uses: SonarSource/sonarcloud-github-action@v2
