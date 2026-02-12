@@ -1,9 +1,9 @@
 name: SonarCloud Scan
 # This workflow runs when code is pushed to the main branch
 on:
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
   pull_request:
     branches:
       - main
